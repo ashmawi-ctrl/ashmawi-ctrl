@@ -22,14 +22,19 @@ I enjoy breaking complex issues into reproducible steps, tracing root causes, an
 - Open-source contributions
 - AI evaluation and coding-agent workflows
 
-## Featured project
+## Featured projects
 
 ### [Webhook Inspector](https://github.com/ashmawi-ctrl/webhook-inspector)
 
-A small Python/FastAPI service for inspecting signed webhook events, detecting duplicates, and testing retry-safe integration behavior.
+A Python/FastAPI service for inspecting signed webhook events, tracing requests with correlation IDs, detecting duplicate deliveries, and exposing delivery statistics.
+
+### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
+
+A SQLite-backed print queue that uses idempotency keys, retry backoff, and an explicit `uncertain` state to reduce duplicate receipts during printer/network failures.
 
 ## What I'm building next
 
-- POS printer retry simulator with idempotency protection
+- Payment log analyzer for API and transaction failures
 - POS network diagnostics CLI
+- API contract guard for detecting breaking response changes
 - Open-source contributions around backend tooling and reliability
