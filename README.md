@@ -32,9 +32,12 @@ A Python/FastAPI service for inspecting signed webhook events, tracing requests 
 
 A SQLite-backed print queue that uses idempotency keys, retry backoff, and an explicit `uncertain` state to reduce duplicate receipts during printer/network failures.
 
+### [Payment Log Analyzer](https://github.com/ashmawi-ctrl/payment-log-analyzer)
+
+A Python CLI that parses CSV/JSONL payment logs, summarizes failure codes and endpoint latency, flags malformed rows, and surfaces conflicting terminal transaction states.
+
 ## What I'm building next
 
-- Payment log analyzer for API and transaction failures
 - POS network diagnostics CLI
 - API contract guard for detecting breaking response changes
 - Open-source contributions around backend tooling and reliability
