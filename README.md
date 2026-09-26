@@ -1,43 +1,77 @@
 # Abdelrhman Ashmawi
 
-Technical Support professional focused on production systems, payment integrations, APIs, webhooks, networking, and incident troubleshooting.
+Technical Support professional moving deeper into software engineering through production-focused backend and reliability projects.
 
-I enjoy breaking complex issues into reproducible steps, tracing root causes, and building small tools that make debugging and reliability work easier.
+My day-to-day background is in payment integrations, REST APIs, webhooks, POS systems, logs, networking, incident investigation, and root-cause analysis. I use that experience to build small tools around failure handling, observability, reproducibility, and safe recovery.
 
-## What I work with
+## Engineering focus
 
-- REST APIs and webhook integrations
-- Payment and POS systems
-- Production troubleshooting and log analysis
-- SQL and data validation
-- Python for automation and backend tooling
-- Network and connectivity diagnostics
-- Git, GitHub, Docker, and API testing
+- debugging production-style failures from logs and symptoms
+- reading and changing unfamiliar codebases
+- writing regression tests before or alongside fixes
+- API contracts, webhooks, idempotency, retries, and failure states
+- Git branches, issues, pull requests, and CI checks
+- Python, SQL, FastAPI, SQLite, Docker, GitHub Actions
+- documenting design trade-offs instead of hiding edge cases
 
-## Current focus
-
-- Backend engineering fundamentals
-- Reliability and observability tooling
-- Testing and reproducible debugging
-- Open-source contributions
-- AI evaluation and coding-agent workflows
-
-## Featured projects
-
-### [Webhook Inspector](https://github.com/ashmawi-ctrl/webhook-inspector)
-
-A Python/FastAPI service for inspecting signed webhook events, tracing requests with correlation IDs, detecting duplicate deliveries, and exposing delivery statistics.
+## Selected work
 
 ### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
 
-A SQLite-backed print queue that uses idempotency keys, retry backoff, and an explicit `uncertain` state to reduce duplicate receipts during printer/network failures.
+SQLite-backed print queue built around a real reliability problem: preventing duplicate receipts when users retry after network failures.
+
+Highlights:
+- idempotency keys
+- explicit job state machine
+- exponential retry backoff
+- ambiguous-delivery handling
+- worker-crash recovery
+- issue-driven feature development and regression tests
+- GitHub Actions quality checks
+
+Recent engineering workflow: [Issue #1](https://github.com/ashmawi-ctrl/pos-print-queue/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/pos-print-queue/pull/2) → CI → merge.
+
+### [Webhook Inspector](https://github.com/ashmawi-ctrl/webhook-inspector)
+
+FastAPI service for inspecting signed webhook deliveries and reproducing integration failures.
+
+Highlights:
+- HMAC-SHA256 signature verification
+- duplicate-event detection
+- correlation IDs
+- structured JSON logging
+- request latency tracking
+- automated tests
+- Docker + CI
 
 ### [Payment Log Analyzer](https://github.com/ashmawi-ctrl/payment-log-analyzer)
 
-A Python CLI that parses CSV/JSONL payment logs, summarizes failure codes and endpoint latency, flags malformed rows, and surfaces conflicting terminal transaction states.
+CLI for turning payment/API log exports into an operational report.
 
-## What I'm building next
+Highlights:
+- CSV and JSONL parsing
+- p50 / p95 / max latency
+- response-code analysis
+- per-endpoint metrics
+- malformed-row handling
+- transaction terminal-state conflict detection
+- Markdown and JSON reports
 
-- POS network diagnostics CLI
-- API contract guard for detecting breaking response changes
-- Open-source contributions around backend tooling and reliability
+## How I approach a bug
+
+1. reproduce the behavior with the smallest useful case
+2. identify the boundary where the observed behavior becomes incorrect
+3. add or improve a regression test
+4. make the smallest maintainable fix
+5. run linting and the full test suite
+6. document important failure semantics and trade-offs
+7. ship through a reviewable pull request
+
+## Currently building toward
+
+- API contract compatibility tooling
+- network diagnostics for POS environments
+- Dockerized software-engineering task harnesses
+- open-source bug fixes and test contributions
+
+I am particularly interested in backend engineering, reliability, developer tooling, software evaluation, and open-source work.
