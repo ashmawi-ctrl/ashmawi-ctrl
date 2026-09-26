@@ -1,8 +1,8 @@
 # Abdelrhman Ashmawi
 
-Backend and reliability-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
+Backend, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
 
-I am most interested in software work where the hard part is not only writing code, but understanding an unfamiliar system, reproducing a failure, designing a safe fix, and proving the behavior with tests.
+I am most interested in technical work where the hard part is understanding a system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
 
 ## Engineering focus
 
@@ -11,6 +11,7 @@ I am most interested in software work where the hard part is not only writing co
 - regression testing and reproducible bug reports
 - API contracts and integration reliability
 - idempotency, retries, state machines, and failure recovery
+- tabular machine learning and model evaluation
 - Git issues, feature branches, pull requests, and CI
 - Dockerized development and evaluation workflows
 - SQL, structured logs, and operational data analysis
@@ -36,6 +37,16 @@ It catches removed fields, nested type changes, object-to-string drift, nullabil
 **Engineering signals:** recursive data structures, compatibility rules, CLI exit semantics, regression tests, Docker, CI.
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/api-contract-guard/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/api-contract-guard/pull/2) → green CI → merge.
+
+### [Payment Risk ML Pipeline](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline)
+
+A reproducible baseline for imbalanced tabular payment-risk classification.
+
+It validates dataset assumptions, excludes identifiers explicitly, splits before fitting preprocessing, combines numeric/categorical transformations in a single sklearn pipeline, trains a class-balanced logistic baseline, and reports ROC-AUC, average precision, threshold metrics, and a confusion matrix.
+
+**Engineering signals:** leakage prevention, imbalanced classification, reproducible preprocessing, model persistence, synthetic data generation, Docker, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/pull/2) → green CI → merge.
 
 ### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
 
@@ -76,10 +87,10 @@ It parses CSV and JSONL, calculates latency percentiles, groups response codes a
 
 ## Tools I use
 
-Python · FastAPI · SQL · SQLite · REST APIs · Webhooks · Git · GitHub · Docker · pytest · Ruff · GitHub Actions · Linux/CLI workflows
+Python · pandas · scikit-learn · FastAPI · SQL · SQLite · REST APIs · Webhooks · Git · GitHub · Docker · pytest · Ruff · GitHub Actions · Linux/CLI workflows
 
-## What I am working on next
+## Current direction
 
-My next priority is contributing fixes and tests to external open-source repositories so the same workflow shown here is exercised on codebases I did not create.
+I am expanding the same workflow into external open-source contributions and public ML evaluation work: unfamiliar codebases, reproducible experiments, focused patches, and measurable results.
 
-I am particularly interested in backend engineering, reliability, developer tooling, software evaluation, coding-agent benchmarks, and open-source systems.
+I am particularly interested in backend engineering, reliability, AI/software evaluation, applied machine learning, coding-agent benchmarks, and open-source systems.
