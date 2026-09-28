@@ -2,13 +2,14 @@
 
 Backend, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
 
-I am most interested in technical work where the hard part is understanding a system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
+I am most interested in technical work where the hard part is understanding an unfamiliar system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
 
 ## Engineering focus
 
 - Python backend and developer tooling
 - debugging and root-cause analysis
 - regression testing and reproducible bug reports
+- Git history analysis and failure isolation
 - API contracts and integration reliability
 - idempotency, retries, state machines, and failure recovery
 - tabular machine learning and model evaluation
@@ -28,6 +29,26 @@ It copies an unfamiliar codebase into a temporary workspace, proves the baseline
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/swe-task-harness/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/swe-task-harness/pull/2) → green CI → merge.
 
+### [Git Regression Bisector](https://github.com/ashmawi-ctrl/git-regression-bisector)
+
+A debugging CLI that finds the first commit that changes a verification command from passing to failing.
+
+It validates known-good / known-bad boundaries, searches first-parent history with binary search, runs probes inside temporary detached worktrees so the caller's checkout is untouched, and preserves command output, timing, timeout state, and commit context in text or JSON reports.
+
+**Engineering signals:** Git internals, regression isolation, binary search, subprocess control, worktree safety, integration testing, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/git-regression-bisector/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/git-regression-bisector/pull/2), then [Issue #3](https://github.com/ashmawi-ctrl/git-regression-bisector/issues/3) → [PR #4](https://github.com/ashmawi-ctrl/git-regression-bisector/pull/4).
+
+### [Flaky Test Investigator](https://github.com/ashmawi-ctrl/flaky-test-investigator)
+
+A repeat-run investigation tool for distinguishing deterministic failures from unstable test behavior.
+
+It executes the same verification command repeatedly, preserves stdout/stderr and timing for every run, classifies stable-pass / stable-fail / flaky / timeout behavior, and can emit archival JSON reports with p50 and p95 timing.
+
+**Engineering signals:** test reliability, failure classification, deterministic regression fixtures, timeout handling, reporting, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/flaky-test-investigator/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/flaky-test-investigator/pull/2), then [Issue #3](https://github.com/ashmawi-ctrl/flaky-test-investigator/issues/3) → [PR #4](https://github.com/ashmawi-ctrl/flaky-test-investigator/pull/4).
+
 ### [API Contract Guard](https://github.com/ashmawi-ctrl/api-contract-guard)
 
 A CI-friendly tool for detecting breaking structural drift between JSON API responses.
@@ -37,16 +58,6 @@ It catches removed fields, nested type changes, object-to-string drift, nullabil
 **Engineering signals:** recursive data structures, compatibility rules, CLI exit semantics, regression tests, Docker, CI.
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/api-contract-guard/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/api-contract-guard/pull/2) → green CI → merge.
-
-### [Payment Risk ML Pipeline](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline)
-
-A reproducible baseline for imbalanced tabular payment-risk classification.
-
-It validates dataset assumptions, excludes identifiers explicitly, splits before fitting preprocessing, combines numeric/categorical transformations in a single sklearn pipeline, trains a class-balanced logistic baseline, and reports ROC-AUC, average precision, threshold metrics, and a confusion matrix.
-
-**Engineering signals:** leakage prevention, imbalanced classification, reproducible preprocessing, model persistence, synthetic data generation, Docker, CI.
-
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/pull/2) → green CI → merge.
 
 ### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
 
@@ -73,6 +84,16 @@ A command-line tool that turns payment/API log exports into an operational repor
 It parses CSV and JSONL, calculates latency percentiles, groups response codes and endpoint failures, tolerates malformed rows, and flags conflicting terminal transaction states.
 
 **Engineering signals:** data parsing, defensive input handling, statistics, CLI design, operational debugging, tests, CI.
+
+### [Payment Risk ML Pipeline](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline)
+
+A reproducible baseline for imbalanced tabular payment-risk classification.
+
+It validates dataset assumptions, excludes identifiers explicitly, splits before fitting preprocessing, combines numeric/categorical transformations in a single sklearn pipeline, trains a class-balanced logistic baseline, and reports ROC-AUC, average precision, threshold metrics, and a confusion matrix.
+
+**Engineering signals:** leakage prevention, imbalanced classification, reproducible preprocessing, model persistence, synthetic data generation, Docker, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/pull/2) → green CI → merge.
 
 ## How I approach engineering tasks
 
