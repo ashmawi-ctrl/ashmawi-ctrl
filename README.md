@@ -1,21 +1,22 @@
 # Abdelrhman Ashmawi
 
-Full-Stack, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
+Software engineering, backend, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
 
 I am most interested in technical work where the hard part is understanding an unfamiliar system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
 
 ## Engineering focus
 
-- Python backend and developer tooling
+- Python and TypeScript backend / developer tooling
 - debugging and root-cause analysis
 - regression testing and reproducible bug reports
 - Git history analysis and failure isolation
+- dependency and build compatibility
+- concurrency, leases, retries, idempotency, and failure recovery
 - API contracts and integration reliability
-- idempotency, retries, state machines, and failure recovery
-- tabular machine learning and model evaluation
 - Git issues, feature branches, pull requests, and CI
 - Dockerized development and evaluation workflows
-- SQL, structured logs, and operational data analysis
+- SQL, SQLite, structured logs, and operational data analysis
+- tabular machine learning and model evaluation
 
 ## Project map
 
@@ -28,6 +29,26 @@ It copies an unfamiliar codebase into a temporary workspace, proves the baseline
 **Engineering signals:** repository inspection, failing-test reproduction, patch workflows, subprocess control, temporary isolation, Docker, task contracts, CI.
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/swe-task-harness/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/swe-task-harness/pull/2) → green CI → merge.
+
+### [Dependency Upgrade Auditor](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor)
+
+A TypeScript tool for auditing Node.js dependency-upgrade revisions against a known-good Git baseline.
+
+It compares package.json dependency declarations, evaluates base and candidate commits in isolated worktrees, captures test/build evidence, and distinguishes a broken baseline from a candidate regression.
+
+**Engineering signals:** unfamiliar repository evaluation, TypeScript, dependency compatibility, Git worktrees, subprocess execution, integration testing, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/pull/2) → green CI → merge. Follow-up work is tracked in [Issue #3](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/3).
+
+### [Distributed Job Runner](https://github.com/ashmawi-ctrl/distributed-job-runner)
+
+A FastAPI + SQLite backend for durable job execution with explicit worker ownership.
+
+It uses idempotent enqueue, atomic claims, time-bounded leases, exponential retry scheduling, stale-owner rejection, and expired-lease recovery. The integration suite includes a real two-worker race against the same SQLite queue.
+
+**Engineering signals:** backend APIs, persistence, concurrency reasoning, leases, state machines, retries, crash recovery, integration testing, Docker, CI.
+
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/distributed-job-runner/pull/2) → CI-found recovery bug → fix → green CI → merge. Long-running lease renewal is tracked separately in [Issue #3](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/3).
 
 ### [Git Regression Bisector](https://github.com/ashmawi-ctrl/git-regression-bisector)
 
@@ -57,8 +78,6 @@ It catches removed fields, nested type changes, object-to-string drift, nullabil
 
 **Engineering signals:** recursive data structures, compatibility rules, CLI exit semantics, regression tests, Docker, CI.
 
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/api-contract-guard/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/api-contract-guard/pull/2) → green CI → merge.
-
 ### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
 
 A SQLite-backed print queue built around a real reliability failure: preventing duplicate receipts when network failures and user retries overlap.
@@ -66,8 +85,6 @@ A SQLite-backed print queue built around a real reliability failure: preventing 
 It models job states explicitly, uses idempotency keys, applies exponential retry backoff, distinguishes safe failures from ambiguous delivery, and supports deliberate stale-worker recovery.
 
 **Engineering signals:** state machines, persistence, idempotency, retry safety, failure semantics, CLI design, tests, CI.
-
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/pos-print-queue/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/pos-print-queue/pull/2) → green CI → merge.
 
 ### [Webhook Inspector](https://github.com/ashmawi-ctrl/webhook-inspector)
 
@@ -93,8 +110,6 @@ It validates dataset assumptions, excludes identifiers explicitly, splits before
 
 **Engineering signals:** leakage prevention, imbalanced classification, reproducible preprocessing, model persistence, synthetic data generation, Docker, CI.
 
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline/pull/2) → green CI → merge.
-
 ## How I approach engineering tasks
 
 1. Reproduce the behavior before changing code.
@@ -108,10 +123,10 @@ Development trail: [Issue #1](https://github.com/ashmawi-ctrl/payment-risk-ml-pi
 
 ## Tools I use
 
-Python · pandas · scikit-learn · FastAPI · SQL · SQLite · REST APIs · Webhooks · Git · GitHub · Docker · pytest · Ruff · GitHub Actions · Linux/CLI workflows
+Python · TypeScript · Node.js · FastAPI · pandas · scikit-learn · SQL · SQLite · REST APIs · Webhooks · Git · GitHub · Docker · pytest · Vitest · Ruff · GitHub Actions · Linux/CLI workflows
 
 ## Current direction
 
-I am expanding the same workflow into external open-source contributions and public ML evaluation work: unfamiliar codebases, reproducible experiments, focused patches, and measurable results.
+I am expanding the same workflow into external open-source contributions and public software/ML evaluation work: unfamiliar codebases, reproducible experiments, focused patches, and measurable results.
 
-I am particularly interested in backend engineering, reliability, AI/software evaluation, applied machine learning, coding-agent benchmarks, and open-source systems.
+I am particularly interested in backend engineering, reliability, software evaluation, applied machine learning, coding-agent benchmarks, and open-source systems.
