@@ -1,6 +1,6 @@
 # Abdelrhman Ashmawi
 
-Backend, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
+Full-Stack, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
 
 I am most interested in technical work where the hard part is understanding an unfamiliar system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
 
