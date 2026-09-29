@@ -1,132 +1,194 @@
 # Abdelrhman Ashmawi
 
-Software engineering, backend, reliability, and applied ML-focused engineer with a production support background in payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation.
+Software engineering portfolio focused on **backend systems, reliability, debugging, testing, developer tooling, and applied ML**.
 
-I am most interested in technical work where the hard part is understanding an unfamiliar system, reproducing a failure, making a safe change, and proving the behavior with tests or measurable evaluation.
+My background is rooted in production technical support around payment systems, REST APIs, webhooks, POS environments, networking, logs, and incident investigation. I use that experience to build software around real failure modes: retries, stale state, broken contracts, flaky tests, dependency regressions, worker crashes, and reproducible debugging.
 
-## Engineering focus
+## Core Software Engineering
 
-- Python and TypeScript backend / developer tooling
-- debugging and root-cause analysis
-- regression testing and reproducible bug reports
-- Git history analysis and failure isolation
-- dependency and build compatibility
-- concurrency, leases, retries, idempotency, and failure recovery
-- API contracts and integration reliability
-- Git issues, feature branches, pull requests, and CI
-- Dockerized development and evaluation workflows
-- SQL, SQLite, structured logs, and operational data analysis
-- tabular machine learning and model evaluation
+**Languages & runtime**
+- Python
+- TypeScript
+- Node.js
+- SQL
 
-## Project map
+**Backend & APIs**
+- FastAPI
+- REST APIs
+- Webhooks
+- request validation
+- API contracts
+- HMAC signatures
+- idempotency
+- background workers
+
+**Data & persistence**
+- SQLite
+- relational data modeling
+- durable state machines
+- transactional updates
+- CSV / JSONL processing
+- model artifact persistence
+
+**Reliability & distributed-systems fundamentals**
+- retries and exponential backoff
+- worker leases and ownership
+- crash recovery
+- stale-state recovery
+- concurrency reasoning
+- duplicate prevention
+- failure classification
+- timeout handling
+
+**Testing & quality**
+- pytest
+- Vitest
+- unit tests
+- integration tests
+- regression tests
+- deterministic fixtures
+- flaky-test investigation
+- linting and type checking
+
+**Git & software delivery**
+- Git history analysis
+- branches and pull requests
+- issues and acceptance criteria
+- patch workflows
+- isolated worktrees
+- GitHub Actions
+- Docker
+- reproducible local commands
+
+**Debugging & observability**
+- structured logs
+- correlation IDs
+- latency analysis
+- root-cause investigation
+- regression isolation
+- stdout / stderr capture
+- machine-readable diagnostic reports
+
+**Applied ML**
+- pandas
+- scikit-learn
+- preprocessing pipelines
+- class imbalance
+- leakage prevention
+- ROC-AUC / average precision
+- reproducible model evaluation
+
+## Selected Engineering Work
 
 ### [SWE Task Harness](https://github.com/ashmawi-ctrl/swe-task-harness)
 
-A reproducible evaluator for software-engineering bug-fix tasks.
+Reproducible evaluation for software-engineering bug-fix tasks.
 
-It copies an unfamiliar codebase into a temporary workspace, proves the baseline failure, checks and applies a real patch, then runs regression verification while recording command output, exit codes, timeouts, and timing.
+It copies a target codebase into an isolated workspace, proves the baseline failure, verifies and applies a patch, then runs regression checks while preserving command output, exit codes, timeouts, and timing.
 
-**Engineering signals:** repository inspection, failing-test reproduction, patch workflows, subprocess control, temporary isolation, Docker, task contracts, CI.
+**Focus:** unfamiliar codebases · patches · failing-test reproduction · Docker · subprocesses · regression verification · CI
 
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/swe-task-harness/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/swe-task-harness/pull/2) → green CI → merge.
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/swe-task-harness/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/swe-task-harness/pull/2) → CI → merge.
+
+---
 
 ### [Dependency Upgrade Auditor](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor)
 
-A TypeScript tool for auditing Node.js dependency-upgrade revisions against a known-good Git baseline.
+TypeScript tooling for comparing dependency-upgrade revisions against a known-good Git baseline.
 
-It compares package.json dependency declarations, evaluates base and candidate commits in isolated worktrees, captures test/build evidence, and distinguishes a broken baseline from a candidate regression.
+It evaluates base and candidate commits in isolated worktrees, reports `package.json` dependency changes, executes explicit verification commands, and separates a broken baseline from a candidate regression.
 
-**Engineering signals:** unfamiliar repository evaluation, TypeScript, dependency compatibility, Git worktrees, subprocess execution, integration testing, CI.
+**Focus:** TypeScript · Node.js · dependency compatibility · Git worktrees · process execution · integration tests · CI
 
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/pull/2) → green CI → merge. Follow-up work is tracked in [Issue #3](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/3).
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/pull/2) → green CI → merge.
+
+Follow-up: [Issue #3](https://github.com/ashmawi-ctrl/dependency-upgrade-auditor/issues/3) covers lockfile validation and revision setup commands.
+
+---
 
 ### [Distributed Job Runner](https://github.com/ashmawi-ctrl/distributed-job-runner)
 
-A FastAPI + SQLite backend for durable job execution with explicit worker ownership.
+FastAPI + SQLite backend for durable job execution with explicit worker ownership.
 
-It uses idempotent enqueue, atomic claims, time-bounded leases, exponential retry scheduling, stale-owner rejection, and expired-lease recovery. The integration suite includes a real two-worker race against the same SQLite queue.
+It implements idempotent enqueue, atomic claims, time-bounded leases, exponential retry scheduling, stale-owner rejection, and expired-lease recovery. The integration suite includes a real two-worker race against the same queue.
 
-**Engineering signals:** backend APIs, persistence, concurrency reasoning, leases, state machines, retries, crash recovery, integration testing, Docker, CI.
+**Focus:** backend APIs · concurrency · persistence · leases · retries · state machines · crash recovery · Docker · CI
 
-Development trail: [Issue #1](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/distributed-job-runner/pull/2) → CI-found recovery bug → fix → green CI → merge. Long-running lease renewal is tracked separately in [Issue #3](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/3).
+Development trail: [Issue #1](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/distributed-job-runner/pull/2) → CI-found recovery bug → fix → green CI → merge.
+
+Follow-up: [Issue #3](https://github.com/ashmawi-ctrl/distributed-job-runner/issues/3) covers lease renewal for long-running work.
+
+---
 
 ### [Git Regression Bisector](https://github.com/ashmawi-ctrl/git-regression-bisector)
 
-A debugging CLI that finds the first commit that changes a verification command from passing to failing.
+Debugging CLI for locating the first commit that changes a verification command from passing to failing.
 
-It validates known-good / known-bad boundaries, searches first-parent history with binary search, runs probes inside temporary detached worktrees so the caller's checkout is untouched, and preserves command output, timing, timeout state, and commit context in text or JSON reports.
+It validates known-good and known-bad boundaries, searches first-parent history with binary search, executes probes in temporary detached worktrees, and preserves commit context and command evidence in text or JSON reports.
 
-**Engineering signals:** Git internals, regression isolation, binary search, subprocess control, worktree safety, integration testing, CI.
+**Focus:** Git internals · binary search · regression isolation · temporary worktrees · subprocess control · integration testing
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/git-regression-bisector/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/git-regression-bisector/pull/2), then [Issue #3](https://github.com/ashmawi-ctrl/git-regression-bisector/issues/3) → [PR #4](https://github.com/ashmawi-ctrl/git-regression-bisector/pull/4).
 
+---
+
 ### [Flaky Test Investigator](https://github.com/ashmawi-ctrl/flaky-test-investigator)
 
-A repeat-run investigation tool for distinguishing deterministic failures from unstable test behavior.
+Repeated-run test investigation for distinguishing deterministic failures from unstable behavior.
 
-It executes the same verification command repeatedly, preserves stdout/stderr and timing for every run, classifies stable-pass / stable-fail / flaky / timeout behavior, and can emit archival JSON reports with p50 and p95 timing.
+It records every execution, classifies `stable-pass`, `stable-fail`, `flaky`, or `timeout`, and emits structured reports with per-run evidence and timing percentiles.
 
-**Engineering signals:** test reliability, failure classification, deterministic regression fixtures, timeout handling, reporting, CI.
+**Focus:** test reliability · failure classification · deterministic fixtures · timeouts · JSON reports · CI
 
 Development trail: [Issue #1](https://github.com/ashmawi-ctrl/flaky-test-investigator/issues/1) → [PR #2](https://github.com/ashmawi-ctrl/flaky-test-investigator/pull/2), then [Issue #3](https://github.com/ashmawi-ctrl/flaky-test-investigator/issues/3) → [PR #4](https://github.com/ashmawi-ctrl/flaky-test-investigator/pull/4).
 
+---
+
 ### [API Contract Guard](https://github.com/ashmawi-ctrl/api-contract-guard)
 
-A CI-friendly tool for detecting breaking structural drift between JSON API responses.
+CI-friendly structural compatibility checks for JSON API responses.
 
-It catches removed fields, nested type changes, object-to-string drift, nullability changes, and list item incompatibilities while separating breaking changes from additive fields.
+It detects removed fields, nested type changes, object-to-string drift, nullability changes, and list-item incompatibilities while keeping additive changes separate from breaking changes.
 
-**Engineering signals:** recursive data structures, compatibility rules, CLI exit semantics, regression tests, Docker, CI.
+**Focus:** API compatibility · recursive data structures · CLI design · regression tests · Docker · CI
+
+## Additional Projects
 
 ### [POS Print Queue](https://github.com/ashmawi-ctrl/pos-print-queue)
-
-A SQLite-backed print queue built around a real reliability failure: preventing duplicate receipts when network failures and user retries overlap.
-
-It models job states explicitly, uses idempotency keys, applies exponential retry backoff, distinguishes safe failures from ambiguous delivery, and supports deliberate stale-worker recovery.
-
-**Engineering signals:** state machines, persistence, idempotency, retry safety, failure semantics, CLI design, tests, CI.
+SQLite-backed print queue covering idempotency, retries, ambiguous physical delivery, worker recovery, and explicit failure semantics.
 
 ### [Webhook Inspector](https://github.com/ashmawi-ctrl/webhook-inspector)
-
-A FastAPI service for reproducing and inspecting webhook integration behavior.
-
-It includes HMAC-SHA256 signature verification, duplicate-event protection, correlation IDs, structured JSON logs, request timing, event inspection, Docker, and automated tests.
-
-**Engineering signals:** HTTP APIs, security primitives, observability, idempotency, backend testing, containerization.
+FastAPI service with HMAC signature verification, duplicate-event protection, correlation IDs, structured logging, request timing, tests, and Docker.
 
 ### [Payment Log Analyzer](https://github.com/ashmawi-ctrl/payment-log-analyzer)
-
-A command-line tool that turns payment/API log exports into an operational report.
-
-It parses CSV and JSONL, calculates latency percentiles, groups response codes and endpoint failures, tolerates malformed rows, and flags conflicting terminal transaction states.
-
-**Engineering signals:** data parsing, defensive input handling, statistics, CLI design, operational debugging, tests, CI.
+CLI for CSV / JSONL operational analysis including latency percentiles, response-code trends, malformed rows, and conflicting transaction terminal states.
 
 ### [Payment Risk ML Pipeline](https://github.com/ashmawi-ctrl/payment-risk-ml-pipeline)
+Reproducible tabular ML baseline with leakage-safe preprocessing, mixed numeric/categorical features, class balancing, model persistence, and imbalanced-class metrics.
 
-A reproducible baseline for imbalanced tabular payment-risk classification.
+## Engineering Workflow
 
-It validates dataset assumptions, excludes identifiers explicitly, splits before fitting preprocessing, combines numeric/categorical transformations in a single sklearn pipeline, trains a class-balanced logistic baseline, and reports ROC-AUC, average precision, threshold metrics, and a confusion matrix.
+I try to keep changes reviewable and evidence-driven:
 
-**Engineering signals:** leakage prevention, imbalanced classification, reproducible preprocessing, model persistence, synthetic data generation, Docker, CI.
+1. reproduce the failure or define the expected behavior
+2. reduce it to a focused test case
+3. inspect the surrounding code and identify the relevant invariant
+4. add regression or integration coverage
+5. implement the smallest maintainable change
+6. run focused checks and the broader suite
+7. investigate CI failures instead of assuming success
+8. document limitations and failure semantics
+9. ship through an issue, branch, pull request, and green CI
 
-## How I approach engineering tasks
+## Stack
 
-1. Reproduce the behavior before changing code.
-2. Reduce the problem to the smallest useful failing case.
-3. Read the surrounding code and identify the actual contract or invariant.
-4. Add a regression test that demonstrates the failure.
-5. Implement the smallest maintainable fix.
-6. Run focused tests, then the broader suite.
-7. Document important trade-offs and failure semantics.
-8. Ship through a reviewable pull request with CI.
+`Python` · `TypeScript` · `Node.js` · `FastAPI` · `SQL` · `SQLite` · `REST APIs` · `Webhooks` · `Git` · `GitHub` · `Docker` · `pytest` · `Vitest` · `Ruff` · `GitHub Actions` · `pandas` · `scikit-learn` · `Linux / CLI workflows`
 
-## Tools I use
+## Current Focus
 
-Python · TypeScript · Node.js · FastAPI · pandas · scikit-learn · SQL · SQLite · REST APIs · Webhooks · Git · GitHub · Docker · pytest · Vitest · Ruff · GitHub Actions · Linux/CLI workflows
-
-## Current direction
-
-I am expanding the same workflow into external open-source contributions and public software/ML evaluation work: unfamiliar codebases, reproducible experiments, focused patches, and measurable results.
-
-I am particularly interested in backend engineering, reliability, software evaluation, applied machine learning, coding-agent benchmarks, and open-source systems.
+- backend and reliability engineering
+- software evaluation and developer tooling
+- unfamiliar-code debugging
+- open-source contributions
+- applied ML evaluation
+- coding-agent / software-engineering benchmark workflows
